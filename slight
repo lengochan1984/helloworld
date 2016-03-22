@@ -1,0 +1,45 @@
+Quan lý tthanh pho	
+	
+City	
+	addCity.xhtml
+	
+	<h:form>
+	<p:panel id="panel" header="New City">
+	
+	<p:messages id="msgs" />
+	
+	<h:panelGrid columns="3" cellpadding="5">
+	<p:outputLabel for="firstname" value="Firstname:" />
+	<p:inputText id="firstname" value="#{cityView.name}" required="true" label="Name">
+	<f:validateLength minimum="1" />
+	<f:validateLength maximum="255" />
+	</p:inputText>
+	<p:message for="firstname" display="icon" />
+	
+	<p:outputLabel for="lastname" value="Lastname:" />
+	<p:inputText id="lastname" value="#{cityView.description}" label="Description">
+	</p:inputText>
+	</h:panelGrid>
+	
+	<p:commandButton value="Save" update="panel" actionListener="#{cityView.save}" icon="ui-icon-check" />
+	</p:panel>
+	</h:form>
+	
+UserView.java	
+	
+	import javax.faces.application.FacesMessage;
+	import javax.faces.bean.ManagedBean;
+	import javax.faces.context.FacesContext;
+	 
+	@ManagedBean
+	public class CityView {
+	     
+	    private String name;
+	    private String description;
+	 
+	 
+	    public void save() {
+	        FacesContext.getCurrentInstance().addMessage(null,
+	                new FacesMessage("Welcome " + name + " " + description));
+	    }
+	}
