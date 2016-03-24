@@ -34,3 +34,18 @@ public class UserBean{
 
 }
 
+
+<p:column headerText="Ações">
+                                        <p:commandLink title="Alterar" update=":formAlterar:Alterar"
+                                                oncomplete="dialogAlterar.show()" immediate="true">
+                                                <p:graphicImage value="./imagens/edit_icon.png" />
+                                                <f:setPropertyActionListener target="#{pessoaBean.pessoa}"
+                                                        value="#{lista}" />
+                                        </p:commandLink>
+                                        <p:commandLink title="Excluir" update=":formExcluir:Excluir"
+                                                oncomplete="confirmation.show()" immediate="true">
+                                                <p:graphicImage value="./imagens/del_icon.png" />
+                                                <f:setPropertyActionListener target="#{pessoaBean.pessoa}"
+                                                        value="#{lista}" />
+                                        </p:commandLink>
+                                </p:column>
